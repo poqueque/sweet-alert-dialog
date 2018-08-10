@@ -1,4 +1,4 @@
-package com.ontbee.legacyforks.cn.pedant.SweetAlert;
+package net.poquesoft.libs.SweetAlert;
 
 import android.content.Context;
 import android.content.res.Resources;
