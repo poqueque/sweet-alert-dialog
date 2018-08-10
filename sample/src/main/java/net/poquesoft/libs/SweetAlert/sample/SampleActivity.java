@@ -1,11 +1,13 @@
-package com.ontbee.legacyforks.cn.pedant.SweetAlert.sample;
+package net.poquesoft.libs.SweetAlert.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 
-import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
+
+import net.poquesoft.libs.SweetAlert.SweetAlertDialog;
+
 
 public class SampleActivity extends Activity implements View.OnClickListener {
 
@@ -23,6 +25,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+        findViewById(R.id.ask_test).setOnClickListener(this);
     }
 
     @Override
@@ -160,6 +163,24 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                                 .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                     }
                 }.start();
+                break;
+            case R.id.ask_test:
+                new SweetAlertDialog(this, SweetAlertDialog.ASK_TYPE)
+                        .setTitleText("Sweet!")
+                        .setContentText("Here's a prompt for text")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.setTitleText("Done!")
+                                        .setContentText("Entered text: "+sDialog.getEditText())
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
+                        .show();
                 break;
         }
     }
