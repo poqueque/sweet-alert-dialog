@@ -151,14 +151,35 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:textAlignment="center"
+            android:theme="@style/CustomEditText"
             android:gravity="center"
             android:textColor="#797979"
-            android:background="@drawable/edittext_background"
             android:hint=""
             android:inputType="text"/>
 
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/rate_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <RatingBar
+            android:id="@+id/rating_bar"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1"
+            android:theme="@style/CustomRatingBar"
+            android:rating="5"
+            android:gravity="center">
+        </RatingBar>
     </FrameLayout>
 
     <LinearLayout

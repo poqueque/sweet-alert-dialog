@@ -20,4 +20,12 @@
         <item name="android:paddingRight">21dp</item>
         <item name="android:textColor">@color/button_text_color</item>
     </style>
+
+    <style name="CustomRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#80CBC4</item>
+        <item name="colorControlActivated">#FFD700</item>
+    </style>
+
+    <style name="CustomEditText" parent="Theme.AppCompat">
+    </style>
 </resources>

@@ -26,6 +26,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
         findViewById(R.id.ask_test).setOnClickListener(this);
+        findViewById(R.id.rating_test).setOnClickListener(this);
     }
 
     @Override
@@ -173,6 +174,24 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Done!")
                                         .setContentText("Entered text: "+sDialog.getEditText())
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
+                        .show();
+                break;
+            case R.id.rating_test:
+                new SweetAlertDialog(this, SweetAlertDialog.RATING_TYPE)
+                        .setTitleText("Sweet!")
+                        .setContentText("Please rate from 1 to 5 stars")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.setTitleText("Done!")
+                                        .setContentText("Stars: "+sDialog.getStars())
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)

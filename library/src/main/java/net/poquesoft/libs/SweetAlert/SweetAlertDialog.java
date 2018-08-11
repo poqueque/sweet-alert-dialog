@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -44,6 +45,8 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private FrameLayout mErrorFrame;
     private FrameLayout mSuccessFrame;
     private FrameLayout mProgressFrame;
+    private FrameLayout mRatingFrame;
+    private RatingBar mRatingBar;
     private EditText mEditText;
     private FrameLayout mPromptFrame;
     private SuccessTickView mSuccessTick;
@@ -67,6 +70,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public static final int CUSTOM_IMAGE_TYPE = 4;
     public static final int PROGRESS_TYPE = 5;
     public static final int ASK_TYPE = 6;
+    public static final int RATING_TYPE = 7;
 
     public static interface OnSweetClickListener {
         public void onClick (SweetAlertDialog sweetAlertDialog);
@@ -153,6 +157,8 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mProgressFrame = (FrameLayout)findViewById(R.id.progress_dialog);
         mEditText = (EditText) findViewById(R.id.prompt_edittext);
         mPromptFrame = (FrameLayout)findViewById(R.id.prompt_dialog);
+        mRatingFrame = (FrameLayout)findViewById(R.id.rate_dialog);
+        mRatingBar = (RatingBar)findViewById(R.id.rating_bar);
         mSuccessTick = (SuccessTickView)mSuccessFrame.findViewById(R.id.success_tick);
         mSuccessLeftMask = mSuccessFrame.findViewById(R.id.mask_left);
         mSuccessRightMask = mSuccessFrame.findViewById(R.id.mask_right);
@@ -179,6 +185,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame.setVisibility(View.GONE);
         mProgressFrame.setVisibility(View.GONE);
         mPromptFrame.setVisibility(View.GONE);
+        mRatingFrame.setVisibility(View.GONE);
         mConfirmButton.setVisibility(View.VISIBLE);
 
         mConfirmButton.setBackgroundResource(R.drawable.blue_button_background);
@@ -250,6 +257,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                     });
                     mEditText.requestFocus();
                     break;
+                case RATING_TYPE:
+                    mRatingFrame.setVisibility(View.VISIBLE);
+                    break;
             }
             if (!fromCreate) {
                 playAnimation();
@@ -272,6 +282,10 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
 
     public String getEditText () {
         return mEditText.getText().toString();
+    }
+
+    public int getStars () {
+        return (int) mRatingBar.getRating();
     }
 
     public SweetAlertDialog setTitleText (String text) {
